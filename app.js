@@ -4,10 +4,12 @@ require("dotenv").config()
 const app=experss();
 const tasks=require("./routes/task")
 const connectDb=require("./db/connect")
+const errorHendlerFunction=require("./middleware/error-hendler")
 
 
 //middlware
 app.use(bodyparser.urlencoded({extended:true}))
+app.use(errorHendlerFunction)
 
 
 
