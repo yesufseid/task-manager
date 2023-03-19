@@ -5,6 +5,7 @@ const app=experss();
 const tasks=require("./routes/task")
 const connectDb=require("./db/connect")
 const errorHendlerFunction=require("./middleware/error-hendler")
+const notFound=require("./middleware/not-found")
 
 
 //middlware
@@ -24,7 +25,7 @@ app.use("/api/v1/tasks/",tasks);
 
 
 
-
+app.use(notFound)
 app.use(errorHendlerFunction)
 const port=process.env.PORT || 3000;
 const start =async()=>{
