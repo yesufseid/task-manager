@@ -5,8 +5,8 @@ const asyncWarapper=require("../middleware/async")
 
 
 const getallTasks=asyncWarapper( async(req,res)=>{
-        const tasks= await Task.find()
-        res.tatus(200).sjson({tasks})
+        const tasks= await Task.find({})
+        res.status(200).json({tasks})
 });
 
 
@@ -25,15 +25,10 @@ const getTasks=asyncWarapper( async(req,res,next)=>{
      res.status(200).json(tasks)
 });
 
-const creatTasks=async(req,res,next)=>{
-   try {
+const creatTasks=asyncWarapper( async(req,res,next)=>{
     const tasks=await Task.create(req.body)
-    res.status(200).json(tasks)
-   } catch (error) {
-     return next(error)
-   }
-    
-};
+    res.status(200).json(tasks)   
+});
 
 const deletTasks=asyncWarapper( async(req,res,next)=>{
       const {id:Taskid}=req.params
