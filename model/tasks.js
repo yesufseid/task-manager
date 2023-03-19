@@ -2,7 +2,10 @@ const mongoose=require("mongoose")
 const {Schema}=mongoose;
 
 const TaskSchema=new Schema({
-   name:String,
+   name:{
+      type:String,
+      required:[1,"this must be required"]
+   },
    completed:Boolean 
 });
 

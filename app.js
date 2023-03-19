@@ -9,7 +9,7 @@ const errorHendlerFunction=require("./middleware/error-hendler")
 
 //middlware
 app.use(bodyparser.urlencoded({extended:true}))
-app.use(errorHendlerFunction)
+
 
 
 
@@ -23,6 +23,9 @@ app.use("/api/v1/tasks/",tasks);
 
 
 
+
+
+app.use(errorHendlerFunction)
 const port=process.env.PORT || 3000;
 const start =async()=>{
     try {
